@@ -75,17 +75,17 @@ def rsvp(event_id):
         # database, render the event_detail.html template, and pass in an error
         # message as `error`.
         # guest_count = Guest.query.filter_by(name=guest_name).count()
-        # if guest_count == 0: 
-        #     error = "Guest not found"
-            
-        #     return render_template('event_detail.html', error=error)
-        # else:
-        #     guest = Guest.query.filter_by(name=guest_name).one()
-        #     guest.events_attending.append(current_event)
-        #     db.session.add(guest)
-        #     db.session.commit()
-        pass
+        guest = Guest.query.filter_by(name=guest_name).one_or_none()
 
+        if guest is None:
+            error = 'Guest not registered'
+
+            context = {
+                'error': error,
+                'event': current_event
+            }
+
+            return render_template('event_detail.html', **context)
         # TODO: If the guest does exist, add the event to their 
         # events_attending, then commit to the database.
     else:
