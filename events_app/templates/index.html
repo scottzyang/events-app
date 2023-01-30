@@ -12,7 +12,7 @@
 -->
 {% for i in range(events|length) %}
 <div class="event-container">
-    <h3><a href="/event/{{i}}">{{events[i].title}}</a></h3>
+    <h3><a href="/event/{{i + 1}}">{{events[i].title}}</a></h3>
     <p><strong>Date and Time:</strong> {{events[i].date_and_time}}</p>
     <p><strong>Description:</strong> {{events[i].description}}</p>
     <p class="small-text">
