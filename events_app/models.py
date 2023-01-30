@@ -35,7 +35,7 @@ class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String(80), nullable=False)
-    date_and_time = db.Column(db.DateTime, nullable=False)
+    date_and_time = db.Column(db.Date, nullable=False)
     guests = db.relationship('Guest', secondary='guest_event', back_populates='events_attending')
 
     def __str__(self):
